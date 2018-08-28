@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CartMapper">
+	<!-- 장바구니 추가 -->
+	<insert id="insertCart">
+		insert into cart(userid,proid,amount) values(#{userid},#{proid},#{amount})
+	</insert>
+	
+	<!-- 장바구니 목록 -->
+	<select id="cartList" resultType="com.mysp.vo.CartVO">
+		select
+			cart.cartid,
+			cart.userid,
+			product.proid,
+			product.proname,
+			cart.amount,
+			product.proprice,
+			(proprice * amount) as money
+		from
+			product, cart
+		where product.proid = cart.proid
+			and cart.userid = #{userid}
+		order by cart.cartid
+	</select>
+	
+	<!-- 장바구니 전체금액 -->
+	<select id="sumMoney" resultType="int">
+		select IFNULL(sum(proprice * amount), 0) as money from cart, product where cart.proid = product.proid and cart.userid=#{userid}
+	</select>
+	
+	<!-- 장바구니 수정 -->
+	<update id="modifyCart">
+		update cart set amount=#{amount} where userid=#{userid} and proid=#{proid}
+	</update>
+	
+	<!-- 장바구니 삭제 -->
+	<delete id="deleteCart">
+		delete from cart where cartid=#{cartid}
+	</delete>
+	
+	<!-- 동일상품 확인 -->
+	<select id="countCart" resultType="int">
+		select count(*) from cart where userid=#{userid} and proid=#{proid}
+	</select>
+	
+	<!-- 동일 상품일 경우 수량으로 늘리기 -->
+	<update id="updateCart">
+		update cart set amount = amount + #{amount} where userid=#{userid} and proid=#{proid}
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	
+</mapper>

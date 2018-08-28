@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="replyMapper">
+	<select id="list" resultType="com.mysp.vo.ReplyVO">
+		select * from testreply where bno = #{bno} order by rno ASC
+	</select>
+	<insert id="create">
+		insert into testreply (bno,replytext,replyer) values(#{bNo},#{replyText},#{replyer})
+	</insert>
+	<update id="update">
+		update testreply set replytext=#{replyText},regdate=now() where rno=#{rNo}
+	</update>
+	<delete id="delete">
+		delete from testreply where rno=#{rNo}
+	</delete>
+	
+	<!-- 페이징 처리 -->
+	<select id="listPage" resultType="com.mysp.vo.ReplyVO">
+		select * from testreply where bno =#{bNo} order by rno asc limit #{cri.pageStart},#{cri.perPageNum}
+	</select>
+	<select id="count" resultType="int">
+		select count(bno) from testreply where bno = #{bNo}
+	</select>
+	
+	<select id="getBNo" resultType="int">
+		select bNo from testreply where rno = #{rNo}
+	</select>
+</mapper>

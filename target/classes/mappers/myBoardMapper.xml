@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MyBoardMapper">
+<!--
+resultType : 결과반환 Object, 질의 결과를 기억할 데이터 형태
+parameterType : 조회결과 Object, 질의를 실행하기 위해 제공해야 할 데이터 형태
+-->
+
+<insert id="write" parameterType="com.mysp.vo.MyBoardVO">
+	insert into testboard(title,content,writer) values(#{title},#{content},#{writer})
+</insert>
+
+<select id="read" resultType="com.mysp.vo.MyBoardVO">
+	select * from testboard where bno=#{bno}
+</select>
+
+<update id="readCnt">
+	update testboard set viewcnt = viewcnt+1 where bno=#{bno}
+</update>
+
+<update id="update">
+	update testboard set title=#{title},
+	content=#{content} where bno = #{bno}
+</update>
+
+<delete id="delete">
+	delete from testboard where bno=#{bno}
+</delete>
+
+<select id="listPage" resultType="com.mysp.vo.MyBoardVO">
+	select * from testboard where bno > 0 order by bno desc, regedate desc limit #{pageStart}, #{perPageNum}
+</select>
+
+<select id="countPaging" resultType="int">
+	select count(bno) from testboard where bno > 0
+</select>
+
+<!-- 댓글갯수 -->
+<update id="updateReplyCnt">
+	update testboard set replycnt = replycnt + #{amount} where bno = #{bno}
+</update>
+
+</mapper>
