@@ -20,6 +20,9 @@
 * HTML, CSS, BootStrap, JavaScript, jQuery, Ajax, JSON
 * STS(Spring Tool Suite), Apache Tomcat v8.0, MySQL
 
+### portfolio ppt link
+https://www.slideshare.net/ssuser25d7ff/spring-portfolio2
+
 
 ## myspb(日本語)
 
