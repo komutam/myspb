@@ -53,8 +53,8 @@
 			<beans:ref bean="AdminLoginInterceptor" />
 		</interceptor>
 		<interceptor>
-			<mapping path="/board/writePage" />
-			<mapping path="/board/modifyPage" />
+			<mapping path="" />
+			<mapping path="" />
 			<beans:ref bean="AdminAuthInterceptor" />
 		</interceptor>
 	</interceptors>

@@ -9,6 +9,9 @@
 		margin:0 auto;
 		text-align:center;
 	}
+	.proInfoContainer > h2{
+		margin-bottom:30px;
+	}
 </style>
 
 <%@include file="../include/header.jsp"%>
@@ -29,12 +32,8 @@
                         <td>가격</td>
                         <td><fmt:formatNumber value="${vo.proprice}" pattern="###,###,###"/></td>
                     </tr>
-                    <tr align="center">
-                        <td>상품소개</td>
-                        <td><textarea name="proinfo" style="width:100%; height:100%; resize:none;">${vo.proinfo}</textarea></td>
-                    </tr>
-                    <tr align="center">
-                        <td colspan="2">
+                    <tr align="center" style="height:30px;">
+                        <td colspan="2" style="padding-top:15px;">
                             <form name="form1" method="post" action="${ctxpath}/cart/insertCart">
                                 <input type="hidden" name="proid" value="${vo.proid}">
                                 <input type="hidden" name="userid" value="${login.userid}">
@@ -43,10 +42,13 @@
                                         <option value="${i}">${i}</option>
                                     </c:forEach>
                                 </select>&nbsp;개
-                                <input type="submit" value="장바구니에 담기">
+                                <input type="submit" value="Add to cart"> <a href="${ctxpath}/product/productList">상품목록</a>
                             </form>
-                            <a href="${ctxpath}/product/productList">상품목록</a>
                         </td>
+                    </tr>
+                    <tr align="center">
+                        <td>상품소개</td>
+                        <td><textarea name="proinfo" style="width:100%; height:100%; resize:none;">${vo.proinfo}</textarea></td>
                     </tr>
                 </table>
             </td>

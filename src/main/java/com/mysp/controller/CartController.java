@@ -65,7 +65,7 @@ public class CartController {
 	}
 	
 	//장바구니 삭제
-	@RequestMapping(value="/deleteCart", method=RequestMethod.POST)
+	@RequestMapping(value="/deleteCart", method=RequestMethod.GET)
 	public String deleteCart(@RequestParam int cartid) throws Exception{
 		cartService.deleteCart(cartid);
 		return "redirect:/cart/cartList";
@@ -73,8 +73,7 @@ public class CartController {
 	
 	//장바구니 modify
 	@RequestMapping(value="/modifyCart", method=RequestMethod.POST)
-	public String modifyCart(@RequestParam int[] amount, @RequestParam int[] proid, HttpSession session) throws Exception{
-		String userid = (String)session.getAttribute("userid");
+	public String modifyCart(@RequestParam int[] amount, @RequestParam int[] proid, @RequestParam String userid) throws Exception{
 		for(int i=0; i<proid.length; i++) { //갯수만큼 반복문실행
 			CartVO vo = new CartVO();
 			vo.setUserid(userid);
@@ -84,5 +83,5 @@ public class CartController {
 		}
 		return "redirect:/cart/cartList";
 	}
-	
+
 }

@@ -41,7 +41,7 @@
 <body class="hold-transition login-page">
 	<div class="login-box">
 		<div class="login-logo">
-			<a href='<c:url value="/admin/adminLogin"/>'><b>AdminLogin</b>Project</a>
+			<a href='<c:url value="/admin/adminLogin"/>'><b>AdminLogin</b></a>
 		</div>
 		<!-- /.login-logo -->
 		<div class="login-box-body">

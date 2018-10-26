@@ -123,7 +123,9 @@ li{
 			</a>
 		</div>
 		<div class="cart">
-			<img src="${ctxpath}/resources/img/cart.png" width="48" height="48">
+			<a href="${ctxpath}/cart/cartList?userid=${login.userid}">
+				<img src="${ctxpath}/resources/img/cart.png" width="48" height="48">
+			</a>
 		</div>
 		<div class="menuBar">
 			<ul class="menuBarUl">

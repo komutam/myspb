@@ -5,11 +5,22 @@
 
 <%@include file="../include/header.jsp"%>
 
-<h2>상품 정보/삭제</h2>
+<style>
+	.proEditContainer{
+		width:500px;
+		margin:0 auto;
+	}
+	.proEditTable{
+		width:100%;
+	}
+</style>
+
+<div class="proEditContainer">
+<h2 style="text-align:center;">상품편집</h2>
 <form id="form1" name="form1" enctype="multipart/form-data" method="POST">
-    <table border="">
+    <table border="1" class="proEditTable">
         <tr>
-            <td>상품 이미지</td>
+            <td style="text-align:center;">상품 이미지</td>
             <td>
                 <img src="${ctxpath}/images/${vo.prourl}" height="300px" width="310px">
                 <br>
@@ -17,16 +28,16 @@
             </td>
         </tr>
         <tr>
-            <td>상품명</td>
-            <td><input type="text" id="proname" name="proname" value="${vo.proname}"></td>
+            <td style="text-align:center;">상품명</td>
+            <td><input type="text" id="proname" name="proname" value="${vo.proname}" style="width:100%;"></td>
         </tr>
         <tr>
-            <td>가격</td>
+            <td style="text-align:center;">가격</td>
             <td><input type="number" id="proprice" name="proprice" value="${vo.proprice}"></td>
         </tr>
         <tr>
-            <td>상품소개</td>
-            <td><textarea id="proinfo" name="proinfo" rows="5" cols="60">${vo.proinfo}</textarea></td>
+            <td style="text-align:center;" height="250px">상품소개</td>
+            <td><textarea id="proinfo" name="proinfo" rows="13" cols="63" style="resize:none;">${vo.proinfo}</textarea></td>
         </tr>
         <tr>
             <td colspan="2" align="center">
@@ -38,6 +49,7 @@
         </tr>
     </table>
 </form>
+</div>
 
 <%@include file="../include/footer.jsp"%>
 
